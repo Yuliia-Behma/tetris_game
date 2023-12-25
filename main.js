@@ -120,6 +120,7 @@ function drawTetromino(){
     for(let row = 0; row < tetrominoMatrixSize; row++){
         for(let column = 0; column < tetrominoMatrixSize; column++){
             if(tetromino.matrix[row][column] == 0){continue}
+
             const cellIndex = convertPositionToIndex(tetromino.row + row, tetromino.column + column);
             cells[cellIndex].classList.add(name);
         }
@@ -199,6 +200,27 @@ function isOutsideOfGameBoard(row, column){
 function hasCollisions(row, column){
     return playfield[tetromino.row + row][tetromino.column + column]
 }
+// ------------------lesson-----------
+let timeoutId;
+let requestId;
+
+function moveDown(){
+    moveTetrominoDown();
+    draw();
+    stopLoop();
+    startLoop();
+}
+function startLoop(){
+    timeoutId = setTimeout(
+        ()=>(requestId = requestAnimationFrame(moveDown), 700)
+    )
+}
+
+function stopLoop(){
+    cancelAnimationFrame();
+    timeoutId = clearTimeout(timeoutId);
+}
+// ---------------------------------
 
 // ------------Score-----------------
 let score = 0;
@@ -263,7 +285,6 @@ function dropRowsAbove(rowDelete){
 function findFilledRows(){
     const filledRows = [];
     for(let row = 0; row < PLAYFIELD_ROWS; row++){
-        // -------------скоротити код до 3-1 рядків
         let filledColumns = 0;
         for(let column = 0; column < PLAYFIELD_COLUMNS; column++){
             if(playfield[row][column] != 0){
@@ -272,11 +293,9 @@ function findFilledRows(){
         }
         if(PLAYFIELD_COLUMNS == filledColumns){
             filledRows.push(row);
-            // console.log(row)
+            console.log(row)
         }
-        // ------------------------------------------
     }
-    // console.log(filledRows);
     
     return filledRows;
 }
@@ -307,9 +326,9 @@ function timerHandler(){
     if(score >= 600){
         speedDown = 100;
     }
-    console.log(speedDown);
+    // console.log(speedDown);
 }
-clearInterval(timerMove);
+// clearInterval(timerMove);
 // -----------------timer-end--------------
 
 
