@@ -11,6 +11,11 @@ body{
     height: 100%;
     user-select: none;
     display: flex;
+    justify-content: center;
+    
+}
+.game{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
