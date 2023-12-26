@@ -60,7 +60,6 @@ let randomName;
 
 function generatePlayfield(rows, columns){
     for (let i = 0; i < rows * columns; i++){
-        // console.log("div generate");
         const div = document.createElement("div");
         tetrisContainer.append(div);
     }
@@ -85,7 +84,7 @@ function generateTetromino(){
     console.log(nameTetro)
     const matrixTetro = TETROMINOES[nameTetro];
 
-    const columnTetro = PLAYFIELD_COLUMNS / 2 - Math.floor(matrixTetro.length / 2);
+    const columnTetro = Math.floor(PLAYFIELD_COLUMNS / 2 - (matrixTetro.length / 2));
     const rowTetro = -matrixTetro.length +1;
     
     tetromino = {
