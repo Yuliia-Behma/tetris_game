@@ -19,9 +19,9 @@ const TETROMINOES = {
         [1, 1]
     ],
     "L": [
-        [0, 0, 1],
-        [1, 1, 1],
-        [0, 0, 0],
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 1, 1],
     ],
     "I": [
         [0, 1, 0, 0],
@@ -30,14 +30,14 @@ const TETROMINOES = {
         [0, 1, 0, 0],
     ],
     "T": [
+        [0, 0, 0],
         [1, 1, 1],
         [0, 1, 0],
-        [0, 0, 0],
     ],
     "Z": [
-        [1, 1, 0],
+        [0, 0, 1],
         [0, 1, 1],
-        [0, 0, 0]
+        [0, 1, 0]
     ],
     // "X": [
     //     [0, 1, 0],
@@ -48,8 +48,8 @@ const TETROMINOES = {
         [1]
     ],
     "B": [
-        [1, 1],
-        [0, 0]
+        [1, 0],
+        [1, 0]
     ]
 }
 
@@ -86,7 +86,7 @@ function generateTetromino(){
     const matrixTetro = TETROMINOES[nameTetro];
 
     const columnTetro = PLAYFIELD_COLUMNS / 2 - Math.floor(matrixTetro.length / 2);
-    const rowTetro = 0;
+    const rowTetro = -matrixTetro.length +1;
     
     tetromino = {
         name: nameTetro,
@@ -119,7 +119,9 @@ function drawTetromino(){
 
     for(let row = 0; row < tetrominoMatrixSize; row++){
         for(let column = 0; column < tetrominoMatrixSize; column++){
+            
             if(tetromino.matrix[row][column] == 0){continue}
+            if(tetromino.row + row < 0){continue}
 
             const cellIndex = convertPositionToIndex(tetromino.row + row, tetromino.column + column);
             cells[cellIndex].classList.add(name);
@@ -198,29 +200,52 @@ function isOutsideOfGameBoard(row, column){
 }
 
 function hasCollisions(row, column){
-    return playfield[tetromino.row + row][tetromino.column + column]
+    return playfield[tetromino.row + row]?.[tetromino.column + column]
 }
-// ------------------lesson-----------
+// ------------Timer-----------
 let timeoutId;
 let requestId;
+let speedDown = 700;
 
 function moveDown(){
     moveTetrominoDown();
     draw();
+    if(score >= 50){
+        speedDown = 600;
+    }
+    if(score >= 100){
+        speedDown = 500;
+    }
+    if(score >= 250){
+        speedDown = 400;
+    }
+    if(score >= 350){
+        speedDown = 300;
+    }
+    if(score >= 500){
+        speedDown = 200;
+    }
+    if(score >= 700){
+        speedDown = 100;
+    }
     stopLoop();
     startLoop();
 }
+
 function startLoop(){
     timeoutId = setTimeout(
-        ()=>(requestId = requestAnimationFrame(moveDown), 700)
-    )
+        ()=>(requestId = requestAnimationFrame(moveDown)), speedDown
+    );
 }
 
 function stopLoop(){
-    cancelAnimationFrame();
+    cancelAnimationFrame(requestId);
     timeoutId = clearTimeout(timeoutId);
 }
-// ---------------------------------
+
+startLoop();
+
+// ---------------Timer-end-------------
 
 // ------------Score-----------------
 let score = 0;
@@ -259,10 +284,8 @@ function placeTetromino(){
         }
     }
     const filledRows = findFilledRows();
-    console.log(score);
     calculateScore(filledRows);
     removeFilledRows(filledRows);
-    console.log(score);
     generateTetromino();
 }
 
@@ -300,36 +323,7 @@ function findFilledRows(){
     return filledRows;
 }
 
-// ---------timer-------------------------------
 
-let speedDown = 1000;
-let timerMove = setInterval(timerHandler, speedDown);
-
-function timerHandler(){
-    moveTetrominoDown();
-    draw()
-    if(score >= 100){
-        speedDown = 800;
-    }
-    if(score >= 200){
-        speedDown = 600;
-    }
-    if(score >= 300){
-        speedDown = 400;
-    }
-    if(score >= 400){
-        speedDown = 300;
-    }
-    if(score >= 500){
-        speedDown = 200;
-    }
-    if(score >= 600){
-        speedDown = 100;
-    }
-    // console.log(speedDown);
-}
-// clearInterval(timerMove);
-// -----------------timer-end--------------
 
 
 function rotateMatrix(matrixTetromino){
