@@ -157,6 +157,40 @@ function onKeyDown(event){
     draw();
 }
 
+// ---------------Touch event---------------
+
+let leftBtn = document.querySelector("#btn-left");
+let rightBtn = document.querySelector("#btn-right");
+let downBtn = document.querySelector("#btn-down");
+let upBtn = document.querySelector("#btn-up");
+
+leftBtn.addEventListener("touchend", leftButtonTouch);
+rightBtn.addEventListener("touchend", rightButtonTouch);
+downBtn.addEventListener("touchend", downButtonTouch);
+upBtn.addEventListener("touchend", upButtonTouch);
+
+function leftButtonTouch(){
+    moveTetrominoLeft();
+    draw();
+}
+
+function rightButtonTouch(){
+    moveTetrominoRight();
+    draw();
+}
+
+function downButtonTouch(){
+    moveTetrominoDown();
+    draw();
+}
+
+function upButtonTouch(){
+    rotateTetromino();
+    draw();
+}
+
+// ---------------touch event end -------------------
+
 function moveTetrominoDown(){
     tetromino.row += 1;
     if(isValid()){
