@@ -169,6 +169,11 @@ rightBtn.addEventListener("touchend", rightButtonTouch);
 downBtn.addEventListener("touchend", downButtonTouch);
 upBtn.addEventListener("touchend", upButtonTouch);
 
+leftBtn.addEventListener("click", leftButtonTouch);
+rightBtn.addEventListener("click", rightButtonTouch);
+downBtn.addEventListener("click", downButtonTouch);
+upBtn.addEventListener("click", upButtonTouch);
+
 function leftButtonTouch(){
     moveTetrominoLeft();
     draw();
