@@ -159,7 +159,7 @@ h1{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    
+    z-index: 2;
 }
 .headerBtn button{
     margin: 10px 30px;
@@ -242,6 +242,7 @@ header p{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 3;
 }
 
 #game-over-text{
