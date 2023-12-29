@@ -69,6 +69,14 @@ let cells;
 const restartButton = document.querySelector(".restartBtn");
 const gameOverBlock = document.querySelector(".game-over");
 let totalScoreOutput = document.querySelector("#totalScoreOutput");
+let bestOutput = document.querySelector("#bestOutput");
+
+let best = localStorage.getItem("best");
+bestOutput.innerHTML = best;
+
+// localStorage.setItem("best", score);
+
+
 
 function generatePlayfield(rows, columns){
     document.querySelector(".tetris").innerHTML = "";
@@ -359,9 +367,6 @@ startLoop();
 
 // ------------Score-----------------
 
-
-
-
 function calculateScore(destroyRows){
     switch(destroyRows){
         case 1:
@@ -381,6 +386,12 @@ function calculateScore(destroyRows){
     }
     scoreOutput.innerHTML = score;
     totalScoreOutput.innerHTML = score;
+    best = localStorage.getItem("best");
+    bestOutput.innerHTML = best;
+    if(best < score){
+        localStorage.setItem("best", score);
+    }
+    
 }
 
 // ----------------score-end----------------

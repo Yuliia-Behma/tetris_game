@@ -11,8 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Orbitron&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="game">
+    <header>
+        <p>best score: <span id="bestOutput"></span></p>
         <h1>tetris</h1>
+        <button id="restartBtnHeader">restart</button>
+    </header>
+    <main class="game">
         <p>Score: <span id="output"></span></p>
         <div class="tetris">
         </div>
@@ -24,7 +28,7 @@
             </div>
             <div class="btn" id="btn-up"></div>
         </div>
-    </div>
+    </main>
 
     <div class="game-over">
         <p id="game-over-text">game over</p>
