@@ -67,6 +67,8 @@ let isPaused = false;
 let isGameOver = false;
 let cells;
 const restartButton = document.querySelector(".restartBtn");
+const playPauseBtn = document.querySelector("#play-pauseBtn");
+const restartBtnHeader = document.querySelector("#restartBtnHeader");
 const gameOverBlock = document.querySelector(".game-over");
 let totalScoreOutput = document.querySelector("#totalScoreOutput");
 let bestOutput = document.querySelector("#bestOutput");
@@ -347,6 +349,8 @@ function gameOver(){
 }
 
 restartButton.addEventListener('click', init);
+restartBtnHeader.addEventListener('click', init);
+playPauseBtn.addEventListener('click', togglePauseGame)
 
 
 

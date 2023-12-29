@@ -12,14 +12,24 @@ body{
     height: 100%;
     user-select: none;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: column;
 }
 
 header{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+}
+
+header p{
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #0a1128;
+    text-align: center;
+    margin: 0 30px;
+    text-shadow: #0a1128b9 2px 2px 20px;
 }
 
 .game{
@@ -36,6 +46,8 @@ h1{
     font-weight: 400;
     color: #0a1128;
     line-height: 60px;
+    position: absolute;
+    left: calc(50% - 137px);
 }
 
 .game p{
@@ -98,13 +110,45 @@ h1{
 .button-container{
     display: none;
 }
+.headerBtn{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    
+}
+.headerBtn button{
+    margin: 10px 30px;
+    background-color: #0a112837;
+    text-transform: uppercase;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: large;
+    padding: 4px 6px;
+    color: #0a1128;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+}
+
+.headerBtn button::after{
+    max-width: 100%;
+  height: 2px;
+  display: block;
+  content: "";
+  background: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
+  opacity: 1;
+  margin-bottom: -6px;
+  margin-top: 1px;
+}
+
 /* --------------Media------------ */
 @media only screen and (max-width: 768px) and (orientation: portrait){
+
     .button-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 37vh;
+    width: 33vh;
     height: 16vh;
     margin-top: 10px;
 }
@@ -122,6 +166,15 @@ h1{
     width: 35%;
 
 }
+
+.headerBtn{
+    flex-direction: row;
+}
+
+.headerBtn button{
+    margin: 0 20px;
+}
+
 #btn-right{
     background-image: url("./images/arrow-right.png");
     background-size: contain;
@@ -145,7 +198,7 @@ h1{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 33%;
+    width: 30%;
 }
 .btn{
     aspect-ratio: 1/1;
@@ -154,14 +207,36 @@ h1{
     opacity: 0.92;
 }
 
-h1{
+h1{ 
+    position: static;
     font-size: 40px;
-line-height: 40px;
+    line-height: 40px;
+    left: calc(50% - 90px);
+    margin: 7px;
+    letter-spacing: 2px;
 }
+
+header{
+    flex-direction: column-reverse;
+}
+
+header p{
+    font-size: 15px;
+    margin: 3px;
+    text-shadow: none;
+}
+
 .game p{
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 17px;
+    line-height: 20px;
 }
+
+.game-over #game-over-text{
+    font-size: 50px;
+    line-height: 90px;
+    text-align: center;
+}
+
 }
 /* ---------------Media end -------------- */
 
