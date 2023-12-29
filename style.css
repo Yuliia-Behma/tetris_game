@@ -107,7 +107,54 @@ h1{
 /* buttons------------------------------ */
 .button-container{
     display: none;
+    justify-content: center;
+    align-items: center;
+    width: 33vh;
+    height: 16vh;
+    margin-top: 10px;
 }
+
+.manipulate{
+    width: 66%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    margin-right: 30px;
+}
+
+.manipulate div{
+    width: 35%;
+}
+
+#btn-right, #btn-left, #btn-down, #btn-up{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#btn-right{
+    background-image: url("./images/arrow-right.png");
+    
+}
+#btn-left{
+    background-image: url("./images/arrow-left.png");
+}
+#btn-down{
+    background-image: url("./images/arrow-down.png");
+}
+#btn-up{
+    background-image: url("./images/arrow-up.png");
+    width: 30%;
+}
+.btn{
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    opacity: 0.92;
+    cursor: pointer;
+}
+
 .headerBtn{
     display: flex;
     justify-content: space-around;
@@ -141,77 +188,25 @@ h1{
 }
 
 /* --------------Media------------ */
-@media screen and (max-width: 768px) and (orientation: portrait){
-
+@media screen and (max-width: 960px){
     .button-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 33vh;
-    height: 16vh;
-    margin-top: 10px;
+        display: flex;
+    }
 }
 
-.manipulate{
-    width: 66%;
+@media screen and (max-width: 768px){
+
+.button-container{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;
-    margin-right: 30px;
-}
-
-.manipulate div{
-    width: 35%;
-
 }
 
 .headerBtn{
     flex-direction: row;
 }
 
-.headerBtn button{
-    margin: 0 20px;
-}
-
-#btn-right{
-    background-image: url("./images/arrow-right.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#btn-left{
-    background-image: url("./images/arrow-left.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#btn-down{
-    background-image: url("./images/arrow-down.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#btn-up{
-    background-image: url("./images/arrow-up.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 30%;
-}
-.btn{
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    opacity: 0.92;
-}
-
 h1{ 
-    position: static;
     font-size: 40px;
     line-height: 40px;
-    left: calc(50% - 90px);
-    margin: 7px;
     letter-spacing: 2px;
 }
 

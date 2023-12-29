@@ -174,9 +174,6 @@ function draw(){
     // console.table(playfield);
 }
 
-// //////////////////////
-
-
 
 function togglePauseGame(){
     isPaused = !isPaused;
@@ -194,11 +191,6 @@ function dropTetrominoDown(){
     }
     tetromino.row--;
 }
-
-
-
-
-// /////////////////////
 
 document.addEventListener("keydown", onKeyDown);
 
@@ -235,10 +227,10 @@ let rightBtn = document.querySelector("#btn-right");
 let downBtn = document.querySelector("#btn-down");
 let upBtn = document.querySelector("#btn-up");
 
-leftBtn.addEventListener("touchend", leftButtonTouch);
-rightBtn.addEventListener("touchend", rightButtonTouch);
-downBtn.addEventListener("touchend", downButtonTouch);
-upBtn.addEventListener("touchend", upButtonTouch);
+// leftBtn.addEventListener("touchend", leftButtonTouch);
+// rightBtn.addEventListener("touchend", rightButtonTouch);
+// downBtn.addEventListener("touchend", downButtonTouch);
+// upBtn.addEventListener("touchend", upButtonTouch);
 
 leftBtn.addEventListener("click", leftButtonTouch);
 rightBtn.addEventListener("click", rightButtonTouch);
@@ -246,21 +238,33 @@ downBtn.addEventListener("click", downButtonTouch);
 upBtn.addEventListener("click", upButtonTouch);
 
 function leftButtonTouch(){
+    if(isPaused){
+        return;
+    }
     moveTetrominoLeft();
     draw();
 }
 
 function rightButtonTouch(){
+    if(isPaused){
+        return;
+    }
     moveTetrominoRight();
     draw();
 }
 
 function downButtonTouch(){
-    moveTetrominoDown();
+    if(isPaused){
+        return;
+    }
+    dropTetrominoDown();
     draw();
 }
 
 function upButtonTouch(){
+    if(isPaused){
+        return;
+    }
     rotateTetromino();
     draw();
 }
