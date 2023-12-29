@@ -76,10 +76,6 @@ let bestOutput = document.querySelector("#bestOutput");
 let best = localStorage.getItem("best");
 bestOutput.innerHTML = best;
 
-// localStorage.setItem("best", score);
-
-
-
 function generatePlayfield(rows, columns){
     document.querySelector(".tetris").innerHTML = "";
     for (let i = 0; i < rows * columns; i++){
@@ -117,11 +113,6 @@ function generateTetromino(){
         column: columnTetro,
     }
 }
-
-// generatePlayfield(PLAYFIELD_ROWS, PLAYFIELD_COLUMNS);
-// generateTetromino();
-
-
 
 function drawPlayField(){
 
@@ -220,17 +211,12 @@ function onKeyDown(event){
 }
 
 
-// ---------------Touch event---------------
+// ---------------Click event---------------
 
 let leftBtn = document.querySelector("#btn-left");
 let rightBtn = document.querySelector("#btn-right");
 let downBtn = document.querySelector("#btn-down");
 let upBtn = document.querySelector("#btn-up");
-
-// leftBtn.addEventListener("touchend", leftButtonTouch);
-// rightBtn.addEventListener("touchend", rightButtonTouch);
-// downBtn.addEventListener("touchend", downButtonTouch);
-// upBtn.addEventListener("touchend", upButtonTouch);
 
 leftBtn.addEventListener("click", leftButtonTouch);
 rightBtn.addEventListener("click", rightButtonTouch);
@@ -269,7 +255,7 @@ function upButtonTouch(){
     draw();
 }
 
-// ---------------touch event end -------------------
+// ---------------click event end -------------------
 
 function moveTetrominoDown(){
     tetromino.row += 1;
