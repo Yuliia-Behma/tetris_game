@@ -18,7 +18,7 @@ body{
 
 header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -46,8 +46,6 @@ h1{
     font-weight: 400;
     color: #0a1128;
     line-height: 60px;
-    position: absolute;
-    left: calc(50% - 137px);
 }
 
 .game p{
@@ -70,8 +68,8 @@ h1{
     box-shadow: inset 2px 2px 2px rgba(59, 50, 104, 0.527), 
     inset rgba(255, 255, 255, 0.062) -2px -2px 2px;
     border-radius: 0.6vh;
-    height: min(3.5vh, 7vw);
-    width: min(3.5vh, 7vw);
+    height: min(3vh, 7vw);
+    width: min(3vh, 7vw);
 }
 
 .tetris .O{
@@ -128,6 +126,7 @@ h1{
     padding: 4px 6px;
     color: #0a1128;
     box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+    cursor: pointer;
 }
 
 .headerBtn button::after{
@@ -142,7 +141,7 @@ h1{
 }
 
 /* --------------Media------------ */
-@media only screen and (max-width: 768px) and (orientation: portrait){
+@media screen and (max-width: 768px) and (orientation: portrait){
 
     .button-container{
     display: flex;
